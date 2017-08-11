@@ -265,3 +265,6 @@ D:\Users\Lucas\Desktop\API\API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Users\Lucas\Desktop\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
 D:\Users\Lucas\Desktop\API\API\obj\Debug\API.dll
 D:\Users\Lucas\Desktop\API\API\obj\Debug\API.pdb
+C:\ApptivoAPI\ApptivoAPI\ApptivoAPI\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+C:\ApptivoAPI\ApptivoAPI\ApptivoAPI\API\API\obj\Debug\API.dll
+C:\ApptivoAPI\ApptivoAPI\ApptivoAPI\API\API\obj\Debug\API.pdb

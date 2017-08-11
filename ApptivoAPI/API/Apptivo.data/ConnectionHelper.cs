@@ -23,7 +23,7 @@ namespace Apptivo.data
                 return CloudConfigurationManager.GetSetting("MySqlConnectionString");
             }
         }
-        /*   public void Get_Connection()
+        /*  public void Get_Connection()
            {
                MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
                conn_string.Server = "localhost";
@@ -62,4 +62,5 @@ namespace Apptivo.data
                 return false;
             }
         }
+    }
 }
