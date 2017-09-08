@@ -1,2 +1,2 @@
 [config]
-project = WebProject/WebProject.csproj
+project = API/API/API.csproj
