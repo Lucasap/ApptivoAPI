@@ -1,2 +1,2 @@
 [config]
-project = ApptivoAPI/API/API/API.csproj
+project = API/API.csproj
