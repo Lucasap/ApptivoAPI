@@ -58,7 +58,7 @@ namespace API.Models
             Usuario nusuario = new Usuario();
             MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = connection;
-                cmd.CommandText = "SELECT * FROM `localdb`.`usuario` WHERE `Mail` = '" + Email + "' AND `Contraseña` = '" + Password + "'";
+                cmd.CommandText = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contraseña` = '" + Password + "'";
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 Reader.Read();
                 
