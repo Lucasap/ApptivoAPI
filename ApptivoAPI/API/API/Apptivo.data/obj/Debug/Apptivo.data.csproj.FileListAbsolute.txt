@@ -1,1 +1,11 @@
 C:\ApptivoAPI\ApptivoAPI\ApptivoAPI\API\Apptivo.data\obj\Debug\Apptivo.data.csprojResolveAssemblyReference.cache
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\bin\Debug\Apptivo.data.dll
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\bin\Debug\Apptivo.data.pdb
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\bin\Debug\MySql.Data.dll
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\bin\Debug\Microsoft.WindowsAzure.Configuration.xml
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\obj\Debug\Apptivo.data.csprojResolveAssemblyReference.cache
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\obj\Debug\Apptivo.data.dll
+C:\ApptivoAPI\ApptivoAPI\API\API\Apptivo.data\obj\Debug\Apptivo.data.pdb

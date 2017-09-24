@@ -43,7 +43,7 @@ namespace API.Models
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = miHelper.connection;                
-                cmd.CommandText = string.Format("INSERT INTO `usuario` (`Nombre`, `Apellido`, `Sexo`, `Mail`, `Contraseña`) VALUES ('" + Nombre + "', '" + Apellido + "', '" + Sexo + "', '" + MailUsuario.Replace("@", "O") + "', '" + Contraseña + "')");
+                cmd.CommandText = string.Format("INSERT INTO `usuario` (`Nombre`, `Apellido`, `Sexo`, `Mail`, `Contrasena`) VALUES ('" + Nombre + "', '" + Apellido + "', '" + Sexo + "', '" + MailUsuario.Replace("@", "O") + "', '" + Contraseña + "')");
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -54,11 +54,11 @@ namespace API.Models
         public Usuario ValidateLogin(String Email, String Password)
         {
             bool SioNo = false;
-            Get_Connection();
+            //Get_Connection();
             Usuario nusuario = new Usuario();
             MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = connection;
-                cmd.CommandText = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contraseña` = '" + Password + "'";
+                cmd.CommandText = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
                 MySqlDataReader Reader = cmd.ExecuteReader();
                 Reader.Read();
                 
@@ -83,11 +83,11 @@ namespace API.Models
 
         {
             MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
-            conn_string.Database = "apptivo";
+            conn_string.Database = "localdb";
             conn_string.Port = 3306;
             conn_string.Server = "localhost";
             conn_string.UserID = "root";
-            //conn_string.Password = "root";
+            conn_string.Password = "root";
             
             
 
