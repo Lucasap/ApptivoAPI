@@ -28,7 +28,7 @@ namespace API.Controllers
         {
             
             Usuario usr  = new Usuario();
-            usr.ValidateLogin(strEmail, strPassword);
+            usr.ObtenerPorMail(strEmail, strPassword);
 
             if(usr != null)
             {

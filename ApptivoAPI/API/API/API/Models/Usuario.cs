@@ -51,6 +51,24 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
+        public static List<Usuario> ObtenerPorMail(string Email, string Password)
+        {
+            ConnectionHelper miHelper = new ConnectionHelper();
+            string select = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
+            DataTable dt = DBHelper.EjecutarSelect(select);
+            List<Usuario> lista = new List<Persona>();
+            Persona p;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    p = ObtenerPorRow(row);
+                    lista.Add(p);
+                }
+                p = ObtenerPorRow(dt.Rows[0]);
+            }
+            return lista;
+        }
         public Usuario ValidateLogin(String Email, String Password)
         {
             bool SioNo = false;

@@ -23,6 +23,29 @@ namespace Apptivo.data
                 return CloudConfigurationManager.GetSetting("MySqlConnectionString");
             }
         }
+        public static void EjecutarIUD(string query)
+        {
+            using (MySqlConnection miConn = new MySqlConnection(ConnectionString))
+            {
+                miConn.Open();
+                MySqlCommand miCommand = new MySqlCommand(query, miConn);
+                miCommand.ExecuteNonQuery();
+                miConn.Close(); //Nos aseguramos de cerrar la conexion
+            }
+        }
+        public static DataTable EjecutarSelect(string select)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection miConn = new MySqlConnection(ConnectionString))
+            {
+                miConn.Open();
+                MySqlCommand miCommand = new MySqlCommand(select, miConn);
+                MySqlDataAdapter da = new MySqlDataAdapter(miCommand);
+                da.Fill(dt);
+                miConn.Close();
+            }
+            return dt;
+        }
         /*  public void Get_Connection()
            {
                MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
