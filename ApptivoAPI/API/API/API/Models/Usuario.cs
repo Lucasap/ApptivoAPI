@@ -56,8 +56,8 @@ namespace API.Models
             ConnectionHelper miHelper = new ConnectionHelper();
             string select = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
             DataTable dt = DBHelper.EjecutarSelect(select);
-            List<Usuario> lista = new List<Persona>();
-            Persona p;
+            List<Usuario> lista = new List<Usuario>();
+            Usuario usr;
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
