@@ -34,7 +34,7 @@ namespace Apptivo.data
                 miConn.Close(); //Nos aseguramos de cerrar la conexion
             }
         }
-        public static DataTable EjecutarSelect(string select)
+        public DataTable EjecutarSelect(string select)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection miConn = new MySqlConnection(ConnectionString))

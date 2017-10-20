@@ -51,7 +51,7 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
-        public static List<Usuario> ObtenerPorMail(string Email, string Password)
+        public List<Usuario> ObtenerPorMail(string Email, string Password)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
             string select = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
@@ -62,12 +62,22 @@ namespace API.Models
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    p = ObtenerPorRow(row);
-                    lista.Add(p);
+                    usr = ObtenerPorRow(row);
+                    lista.Add(usr);
                 }
-                p = ObtenerPorRow(dt.Rows[0]);
+                usr = ObtenerPorRow(dt.Rows[0]);
             }
             return lista;
+        }
+        private static Usuario ObtenerPorRow(DataRow row)
+        {
+            Usuario p = new Usuario();
+            p.Nombre = row.Field<string>("Nombre");
+            p.Apellido = row.Field<string>("Apellido");
+            p.Sexo = row.Field<string>("Sexo");
+            p.Email = row.Field<string>("Mail");
+            p.Contraseña = row.Field<string>("Contrasena");
+            return p;
         }
         public Usuario ValidateLogin(String Email, String Password)
         {
