@@ -51,23 +51,23 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
-        public List<Usuario> ObtenerPorMail(string Email, string Password)
+        public Usuario ObtenerPorMail(string Email, string Password)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
             string select = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
             DataTable dt = miHelper.EjecutarSelect(select);
-            List<Usuario> lista = new List<Usuario>();
-            Usuario usr;
+            //List<Usuario> lista = new List<Usuario>();
+            Usuario usr = null;
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
                     usr = ObtenerPorRow(row);
-                    lista.Add(usr);
+                    //lista.Add(usr);
                 }
                 usr = ObtenerPorRow(dt.Rows[0]);
             }
-            return lista;
+            return usr;
         }
         private static Usuario ObtenerPorRow(DataRow row)
         {
