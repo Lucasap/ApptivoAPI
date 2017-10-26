@@ -60,12 +60,7 @@ namespace API.Models
             Usuario usr = null;
             if (dt.Rows.Count > 0)
             {
-                foreach (DataRow row in dt.Rows)
-                {
-                    usr = ObtenerPorRow(row);
-                    //lista.Add(usr);
-                }
-                usr = ObtenerPorRow(dt.Rows[0]);
+                usr = ObtenerPorRow(dt.Rows[3]);
             }
             return usr;
         }
