@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using API.Models;
-using System.Data;
 using System.Data.OleDb;
 using System.Web.Mvc;
 using MySql.Data.MySqlClient;
@@ -60,7 +59,7 @@ namespace API.Models
             Usuario usr = null;
             if (dt.Rows.Count > 0)
             {
-                usr = ObtenerPorRow(dt.Rows[3]);
+                usr = ObtenerPorRow(dt.Rows[0]);
             }
             return usr;
         }
