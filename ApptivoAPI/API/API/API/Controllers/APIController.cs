@@ -30,7 +30,7 @@ namespace API.Controllers
         {
 
             Usuario usr = new Usuario();
-            usr.ObtenerPorMail(strEmail, strPassword);
+            usr = usr.ObtenerPorMail(strEmail, strPassword);
 
 
             if (usr != null)
