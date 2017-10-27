@@ -15,6 +15,7 @@ namespace API.Models
 {
     public class Usuario
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Email { get; set; }
@@ -74,6 +75,7 @@ namespace API.Models
         private static Usuario ObtenerPorRow(DataRow row)
         {
             Usuario p = new Usuario();
+            p.Id = row.Field<int>("idUsuario");
             p.Nombre = row.Field<string>("Nombre");
             p.Apellido = row.Field<string>("Apellido");
             p.Sexo = row.Field<string>("Sexo");
