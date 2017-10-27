@@ -58,8 +58,8 @@ namespace API.Models
         public Usuario ObtenerPorMail(string Email, string Password)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
-            //string select = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
-            string select = "select * from usuario where Mail=" + Email + " and Contrasena =" + Password;
+            string select = "SELECT * FROM usuario WHERE Mail = '" + Email + "' AND Contrasena = '" + Password + "'";
+            //string select = "select * from usuario where Mail=" + Email + " and Contrasena =" + Password;
             DataTable dt = miHelper.EjecutarSelect(select);
             //List<Usuario> lista = new List<Usuario>();
             Usuario usr = new Usuario();
