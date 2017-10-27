@@ -25,7 +25,7 @@ namespace API.Controllers
         }
 
         [Route("api/API/Login/{strEmail}/{strPassword}")]
-        [ResponseType(typeof(Persona))]
+        [ResponseType(typeof(Usuario))]
         public IHttpActionResult Login(string strEmail, string strPassword)
         {
             
