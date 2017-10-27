@@ -61,8 +61,12 @@ namespace API.Models
             if (dt.Rows.Count > 0)
             {
                 usr = ObtenerPorRow(dt.Rows[0]);
+                return usr;
             }
-            return usr;
+            else
+            {
+                return null;
+            }
         }
         private static Usuario ObtenerPorRow(DataRow row)
         {

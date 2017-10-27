@@ -25,17 +25,16 @@ namespace API.Controllers
         }
 
         [Route("api/API/Login/{strEmail}/{strPassword}")]
-        [ResponseType(typeof(Usuario))]
         [HttpGet]
-        public IHttpActionResult Login(string strEmail, string strPassword)
+        public Usuario Login(string strEmail, string strPassword)
         {
             
-            Usuario usr  = new Usuario();
-            usr.ObtenerPorMail(strEmail, strPassword);
+            Usuario usr  = usr.ObtenerPorMail(strEmail, strPassword);
 
-            if(usr != null)
+
+            if (usr != null)
             {
-                return Ok(usr);
+                return usr;
             }
             else
             {
