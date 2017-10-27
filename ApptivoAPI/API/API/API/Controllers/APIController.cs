@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace API.Controllers
 {
@@ -24,8 +25,8 @@ namespace API.Controllers
         }
 
         [Route("api/API/Login/{strEmail}/{strPassword}")]
-        [HttpGet]
-        public Usuario Login(string strEmail, string strPassword)
+        [ResponseType(typeof(Persona))]
+        public IHttpActionResult Login(string strEmail, string strPassword)
         {
             
             Usuario usr  = new Usuario();
@@ -33,7 +34,7 @@ namespace API.Controllers
 
             if(usr != null)
             {
-                return usr;
+                return Ok(usr);
             }
             else
             {
