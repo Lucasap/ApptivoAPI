@@ -57,7 +57,7 @@ namespace API.Models
             string select = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
             DataTable dt = miHelper.EjecutarSelect(select);
             //List<Usuario> lista = new List<Usuario>();
-            Usuario usr = null;
+            Usuario usr = new Usuario();
             if (dt.Rows.Count > 0)
             {
                 usr = ObtenerPorRow(dt.Rows[0]);
