@@ -28,8 +28,9 @@ namespace API.Controllers
         [HttpGet]
         public Usuario Login(string strEmail, string strPassword)
         {
-            
-            Usuario usr  = usr.ObtenerPorMail(strEmail, strPassword);
+
+            Usuario usr = new Usuario();
+            usr.ObtenerPorMail(strEmail, strPassword);
 
 
             if (usr != null)
