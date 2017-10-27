@@ -20,6 +20,9 @@ namespace API.Models
         public string Email { get; set; }
         public string Contraseña { get; set; }
         public string Sexo { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
+        public int Linea { get; set; }
 
         //private string NombreArchivo = "Apptivo.mdb";
         //private OleDbConnection nCon;
@@ -76,6 +79,10 @@ namespace API.Models
             p.Sexo = row.Field<string>("Sexo");
             p.Email = row.Field<string>("Mail");
             p.Contraseña = row.Field<string>("Contrasena");
+            p.Lat = 0;
+            p.Lng = 0;
+            p.Linea = 0;
+         
             return p;
         }
         public Usuario ValidateLogin(String Email, String Password)
