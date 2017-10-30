@@ -43,6 +43,7 @@ namespace API.Controllers
             }
         }
         [Route("api/API/Registrar/{strNombre}/{strApellido}/{strEmail}/{strPassword}")]
+        [HttpGet]
         public string Registrar(string strNombre, string strApellido, string strEmail, string strPassword)
         {
             string OK = "Ok";
