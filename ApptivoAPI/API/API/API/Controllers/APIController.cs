@@ -44,7 +44,7 @@ namespace API.Controllers
         }
         [Route("api/API/Registrar/{strNombre}/{strApellido}/{strEmail}/{strPassword}")]
         [HttpGet]
-        public string Registrar(string strNombre, string strApellido, string strEmail, string strPassword)
+        public Usuario Registrar(string strNombre, string strApellido, string strEmail, string strPassword)
         {
             string OK = "Ok";
             Usuario usr = new Usuario();
@@ -54,7 +54,7 @@ namespace API.Controllers
             usr.Email = strEmail;
             usr.Contraseña = strPassword;
             usr.Insert(usr);
-            return OK;
+            return usr;
         }
 
         // POST: api/API
