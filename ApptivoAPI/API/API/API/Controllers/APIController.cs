@@ -42,6 +42,19 @@ namespace API.Controllers
                 return null;
             }
         }
+        [Route("api/API/Registrar/{strNombre}/{strApellido}/{strEmail}/{strPassword}")]
+        public string Registrar(string strNombre, string strApellido, string strEmail, string strPassword)
+        {
+            string OK = "Ok";
+            Usuario usr = new Usuario();
+            usr.Nombre = strNombre;
+            usr.Apellido = strApellido;
+            usr.Sexo = "M";
+            usr.Email = strEmail;
+            usr.Contraseña = strPassword;
+            usr.Insert(usr);
+            return OK;
+        }
 
         // POST: api/API
         public void Post([FromBody]string value)

@@ -24,7 +24,7 @@ namespace Apptivo.data
                 return CloudConfigurationManager.GetSetting("MySqlConnectionString");
             }
         }
-        public static void EjecutarIUD(string query)
+        public void EjecutarIUD(string query)
         {
             using (MySqlConnection miConn = new MySqlConnection(ConnectionString))
             {

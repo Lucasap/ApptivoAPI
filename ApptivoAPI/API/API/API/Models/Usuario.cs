@@ -55,6 +55,12 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
+        public void Insert(Usuario Usr)
+        {
+            ConnectionHelper miHelper = new ConnectionHelper();
+            string sInsert = "Insert into usuario (Nombre, Apellido, Sexo, Mail, Contrasena) values ('" + Usr.Nombre + "','" + Usr.Apellido + "','" + Usr.Sexo + "','" + Usr.Email + "','" + Usr.Contraseña + "')";
+            miHelper.EjecutarIUD(sInsert);
+        }
         public Usuario ObtenerPorMail(string Email, string Password)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
@@ -87,33 +93,6 @@ namespace API.Models
             p.Linea = 0;
          
             return p;
-        }
-        public Usuario ValidateLogin(String Email, String Password)
-        {
-            bool SioNo = false;
-            //Get_Connection();
-            Usuario nusuario = new Usuario();
-            MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                cmd.CommandText = "SELECT * FROM `usuario` WHERE `Mail` = '" + Email + "' AND `Contrasena` = '" + Password + "'";
-                MySqlDataReader Reader = cmd.ExecuteReader();
-                Reader.Read();
-                
-            if (Reader.Read()==true)
-                {
-                nusuario.Nombre = Reader.GetString("Nombre");
-                nusuario.Apellido = Reader.GetString("Apellido");
-                nusuario.Email = Reader.GetString("Mail");
-                nusuario.Contraseña = Reader.GetString("Contraseña");
-                nusuario.Sexo = Reader.GetString("Sexo");
-            }
-            else
-            {
-                nusuario = null; 
-            }
-
-            return nusuario;
-
         }
 
         private void Get_Connection()
