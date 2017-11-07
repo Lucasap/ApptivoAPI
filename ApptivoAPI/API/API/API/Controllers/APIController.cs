@@ -57,6 +57,20 @@ namespace API.Controllers
             nusuario.Insert(usr);
             return TodoOk;
         }
+        [Route("api/API/Coordenadas/{strMail}/{strLinea}/{strLat}/{strLng}")]
+        [HttpGet]
+        public string Coordenadas(string Mail, string Linea, string Lat, string Lng)
+        {
+            string TodoOk = "Ok";
+            int nLinea = int.Parse(Linea);
+            float nLat = float.Parse(Lat);
+            float nLng = float.Parse(Lng);
+            Usuario nusuario = new Usuario();
+            nusuario.InsertarCoordenadas(Mail, nLinea, nLat, nLng);
+            return TodoOk;
+
+
+        }
 
         // POST: api/API
         public void Post([FromBody]string value)
