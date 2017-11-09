@@ -57,6 +57,14 @@ namespace API.Controllers
             nusuario.Insert(usr);
             return TodoOk;
         }
+        public List<LatLng> CoordenadasxLinea(int Linea)
+        {
+            LatLng p = new LatLng();
+            Usuario usu = new Usuario();
+            List<LatLng> lista = new List<LatLng>();
+            lista = usu.ObtenerPorLinea(Linea);
+            return lista;
+        }
         [Route("api/API/Coordenadas/{strMail}/{strLinea}/{strLat}/{strLng}")]
         [HttpGet]
         public string Coordenadas(string Mail, string Linea, string Lat, string Lng)

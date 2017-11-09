@@ -21,8 +21,8 @@ namespace API.Models
         public string Email { get; set; }
         public string Contraseña { get; set; }
         public string Sexo { get; set; }
-        public double Lat { get; set; }
-        public double Lng { get; set; }
+        public float Lat { get; set; }
+        public float Lng { get; set; }
         public int Linea { get; set; }
 
         //private string NombreArchivo = "Apptivo.mdb";
@@ -68,6 +68,24 @@ namespace API.Models
             string sInsert = "Insert into usuario (Nombre, Apellido, Sexo, Mail, Contrasena) values ('" + Usr.Nombre + "','" + Usr.Apellido + "','" + Usr.Sexo + "','" + Usr.Email + "','" + Usr.Contraseña + "')";
             miHelper.EjecutarIUD(sInsert);
         }
+        public List<LatLng> ObtenerPorLinea(int Linea)
+        {
+            ConnectionHelper miHelper = new ConnectionHelper();
+            string select = "SELECT * FROM usuario WHERE Linea = '" + Linea + "'";
+            DataTable dt = miHelper.EjecutarSelect(select);
+            List<LatLng> lista = new List<LatLng>();
+            LatLng p;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    p = ObtenerLatLngPorRow(row);
+                    lista.Add(p);
+                }
+                p = ObtenerLatLngPorRow(dt.Rows[0]);
+            }
+            return lista;
+        }
         public Usuario ObtenerPorMail(string Email, string Password)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
@@ -85,6 +103,14 @@ namespace API.Models
             {
                 return null;
             }
+        }
+        private static LatLng ObtenerLatLngPorRow(DataRow row)
+        {
+            LatLng p = new LatLng();
+            p.Lat = row.Field<float>("Lat");
+            p.Lng = row.Field<float>("Lng");
+
+            return p;
         }
         private static Usuario ObtenerPorRow(DataRow row)
         {
