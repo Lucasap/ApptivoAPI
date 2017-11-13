@@ -57,19 +57,21 @@ namespace API.Controllers
             nusuario.Insert(usr);
             return TodoOk;
         }
-        public List<LatLng> CoordenadasxLinea(int Linea)
+        [Route("api/API/CoordenadasxLinea/{strLinea}")]
+        [HttpGet]
+        public List<LatLng> CoordenadasxLinea(string Linea)
         {
             LatLng p = new LatLng();
             Usuario usu = new Usuario();
             List<LatLng> lista = new List<LatLng>();
-            lista = usu.ObtenerPorLinea(Linea);
+            lista = usu.ObtenerPorLinea(Convert.ToInt32(Linea));
             return lista;
         }
         [Route("api/API/Coordenadas/{strMail}/{strLinea}/{strLat}/{strLng}")]
         [HttpGet]
         public string Coordenadas(string Mail, string Linea, string Lat, string Lng)
         {
-            string TodoOk = "Ok";
+            string TodoOk = "Good";
             int nLinea = int.Parse(Linea);
             float nLat = float.Parse(Lat);
             float nLng = float.Parse(Lng);
