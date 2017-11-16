@@ -59,24 +59,24 @@ namespace API.Controllers
         }
         [Route("api/API/CoordenadasxLinea/{strLinea}")]
         [HttpGet]
-        public List<LatLng> CoordenadasxLinea(string Linea)
+        public List<LatLng> CoordenadasxLinea(string strLinea)
         {
             LatLng p = new LatLng();
             Usuario usu = new Usuario();
             List<LatLng> lista = new List<LatLng>();
-            lista = usu.ObtenerPorLinea(Convert.ToInt32(Linea));
+            lista = usu.ObtenerPorLinea(Convert.ToInt32(strLinea));
             return lista;
         }
         [Route("api/API/Coordenadas/{strMail}/{strLinea}/{strLat}/{strLng}")]
         [HttpGet]
-        public string Coordenadas(string Mail, string Linea, string Lat, string Lng)
+        public string Coordenadas(string strMail, string strLinea, string strLat, string strLng)
         {
             string TodoOk = "Good";
-            int nLinea = int.Parse(Linea);
-            float nLat = float.Parse(Lat);
-            float nLng = float.Parse(Lng);
+            int nLinea = int.Parse(strLinea);
+            float nLat = float.Parse(strLat);
+            float nLng = float.Parse(strLng);
             Usuario nusuario = new Usuario();
-            nusuario.InsertarCoordenadas(Mail, nLinea, nLat, nLng);
+            nusuario.InsertarCoordenadas(strMail, nLinea, nLat, nLng);
             return TodoOk;
 
 
