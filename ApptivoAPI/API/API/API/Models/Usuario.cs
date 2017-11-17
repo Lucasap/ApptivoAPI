@@ -23,7 +23,7 @@ namespace API.Models
         public string Sexo { get; set; }
         public float Lat { get; set; }
         public float Lng { get; set; }
-        public int Linea { get; set; }
+        public string Linea { get; set; }
 
         //private string NombreArchivo = "Apptivo.mdb";
         //private OleDbConnection nCon;
