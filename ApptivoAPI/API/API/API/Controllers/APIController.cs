@@ -79,14 +79,13 @@ namespace API.Controllers
             return TodoOk;
         }
         [Route("api/API/SeBajo/{strMail}")]
+        [HttpGet]
         public string SeBajo(string strMail)
         {
             string TodoOk = "Good";
             Usuario nusuario = new Usuario();
             nusuario.ActualizarSeBajo(strMail);
             return TodoOk;
-
-
         }
         // POST: api/API
         public void Post([FromBody]string value)
