@@ -71,8 +71,11 @@ namespace API.Models
 
         public void Insert(Usuario Usr)
         {
+            float Lat = 0;
+            float Lng = 0;
+            string Linea = "0";
             ConnectionHelper miHelper = new ConnectionHelper();
-            string sInsert = "Insert into usuario (Nombre, Apellido, Sexo, Mail, Contrasena) values ('" + Usr.Nombre + "','" + Usr.Apellido + "','" + Usr.Sexo + "','" + Usr.Email + "','" + Usr.Contraseña + "')";
+            string sInsert = "Insert into usuario (Nombre, Apellido, Sexo, Mail, Contrasena, Lat, Lng, Linea) values ('" + Usr.Nombre + "','" + Usr.Apellido + "','" + Usr.Sexo + "','" + Usr.Email + "','" + Usr.Contraseña + "','" + Lat + "','" + Lng + "','" + Linea + "')";
             miHelper.EjecutarIUD(sInsert);
         }
         public List<LatLng> ObtenerPorLinea(string Linea)
