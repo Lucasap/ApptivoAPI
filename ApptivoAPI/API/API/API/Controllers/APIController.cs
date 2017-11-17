@@ -72,10 +72,8 @@ namespace API.Controllers
         public string Coordenadas(string strMail, string strLinea, string strLat, string strLng)
         {
                 string TodoOk = "Good";
-                double nLat = double.Parse(strLat);
-                double nLng = double.Parse(strLng);
                 Usuario nusuario = new Usuario();
-                nusuario.InsertarCoordenadas(strMail, strLinea, nLat, nLng);
+                nusuario.InsertarCoordenadas(strMail, strLinea, strLat, strLng);
                 return TodoOk;
         }
         [Route("api/API/Sebajo/{strMail}")]
