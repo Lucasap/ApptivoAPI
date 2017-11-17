@@ -58,8 +58,15 @@ namespace API.Models
         public void InsertarCoordenadas(string Mail, int Linea, float Lat, float Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
-            string sInsert = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
-            miHelper.EjecutarIUD(sInsert);
+            string sUpdate = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
+            miHelper.EjecutarIUD(sUpdate);
+        }
+        public void ActualizarSeBajo(string Mail)
+        {
+            int Linea = 999;
+            ConnectionHelper miHelper = new ConnectionHelper();
+            string sUpdate = ("update usuario Set Linea = '" + Linea + "' where Mail = '" + Mail + "'");
+            miHelper.EjecutarIUD(sUpdate);
         }
 
         public void Insert(Usuario Usr)

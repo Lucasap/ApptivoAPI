@@ -78,10 +78,17 @@ namespace API.Controllers
             Usuario nusuario = new Usuario();
             nusuario.InsertarCoordenadas(strMail, nLinea, nLat, nLng);
             return TodoOk;
+        }
+        [Route("api/API/SeBajo/{strMail}")]
+        public string SeBajo(string strMail)
+        {
+            string TodoOk = "Good";
+            Usuario nusuario = new Usuario();
+            nusuario.ActualizarSeBajo(strMail);
+            return TodoOk;
 
 
         }
-
         // POST: api/API
         public void Post([FromBody]string value)
         {
