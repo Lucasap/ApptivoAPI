@@ -55,7 +55,7 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
-        public void InsertarCoordenadas(string Mail, int Linea, float Lat, float Lng)
+        public void InsertarCoordenadas(string Mail, string Linea, float Lat, float Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
             string sUpdate = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
@@ -63,7 +63,7 @@ namespace API.Models
         }
         public void ActualizarSeBajo(string Mail)
         {
-            int Linea = 999;
+            string Linea = "999";
             ConnectionHelper miHelper = new ConnectionHelper();
             string sUpdate = ("update usuario Set Linea = '" + Linea + "' where Mail = '" + Mail + "'");
             miHelper.EjecutarIUD(sUpdate);
@@ -75,7 +75,7 @@ namespace API.Models
             string sInsert = "Insert into usuario (Nombre, Apellido, Sexo, Mail, Contrasena) values ('" + Usr.Nombre + "','" + Usr.Apellido + "','" + Usr.Sexo + "','" + Usr.Email + "','" + Usr.Contraseña + "')";
             miHelper.EjecutarIUD(sInsert);
         }
-        public List<LatLng> ObtenerPorLinea(int Linea)
+        public List<LatLng> ObtenerPorLinea(string Linea)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
             string select = "SELECT * FROM usuario WHERE Linea = '" + Linea + "'";
@@ -128,9 +128,9 @@ namespace API.Models
             p.Sexo = row.Field<string>("Sexo");
             p.Email = row.Field<string>("Mail");
             p.Contraseña = row.Field<string>("Contrasena");
-            p.Lat = 0;
-            p.Lng = 0;
-            p.Linea = 0;
+            p.Lat = row.Field<float>("Lat");
+            p.Lng = row.Field<float>("Lng");
+            p.Linea = row.Field<string>("Linea");
          
             return p;
         }

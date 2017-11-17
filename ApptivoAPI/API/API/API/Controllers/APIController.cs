@@ -64,7 +64,7 @@ namespace API.Controllers
             LatLng p = new LatLng();
             Usuario usu = new Usuario();
             List<LatLng> lista = new List<LatLng>();
-            lista = usu.ObtenerPorLinea(Convert.ToInt32(strLinea));
+            lista = usu.ObtenerPorLinea(strLinea);
             return lista;
         }
         [Route("api/API/Coordenadas/{strMail}/{strLinea}/{strLat}/{strLng}")]
@@ -72,11 +72,10 @@ namespace API.Controllers
         public string Coordenadas(string strMail, string strLinea, string strLat, string strLng)
         {
             string TodoOk = "Good";
-            int nLinea = int.Parse(strLinea);
             float nLat = float.Parse(strLat);
             float nLng = float.Parse(strLng);
             Usuario nusuario = new Usuario();
-            nusuario.InsertarCoordenadas(strMail, nLinea, nLat, nLng);
+            nusuario.InsertarCoordenadas(strMail, strLinea, nLat, nLng);
             return TodoOk;
         }
         [Route("api/API/SeBajo/{strMail}")]
