@@ -71,20 +71,16 @@ namespace API.Controllers
         [HttpGet]
         public string Coordenadas(string strMail, string strLinea, string strLat, string strLng)
         {
-                string TodoOk = "Good";
-                Usuario nusuario = new Usuario();
-                nusuario.InsertarCoordenadas(strMail, strLinea, strLat, strLng);
-                return TodoOk;
-        }
-        [Route("api/API/Sebajo/{strMail}")]
-        [HttpGet]
-        public string Sebajo(string strMail)
-        {
             string TodoOk = "Good";
+            double nLat = double.Parse(strLat);
+            double nLng = double.Parse(strLng);
             Usuario nusuario = new Usuario();
-            nusuario.ActualizarSeBajo(strMail);
+            nusuario.InsertarCoordenadas(strMail, strLinea, nLat, nLng);
             return TodoOk;
+
+
         }
+
         // POST: api/API
         public void Post([FromBody]string value)
         {

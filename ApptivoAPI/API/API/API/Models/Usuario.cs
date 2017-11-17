@@ -21,8 +21,8 @@ namespace API.Models
         public string Email { get; set; }
         public string Contraseña { get; set; }
         public string Sexo { get; set; }
-        public string Lat { get; set; }
-        public string Lng { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
         public string Linea { get; set; }
 
         //private string NombreArchivo = "Apptivo.mdb";
@@ -55,18 +55,11 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
-        public void InsertarCoordenadas(string Mail, string Linea, string Lat, string Lng)
+        public void InsertarCoordenadas(string Mail, string Linea, float Lat, float Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
-            string sUpdate = ("update usuario Set Linea = '"+Linea+"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
-            miHelper.EjecutarIUD(sUpdate);
-        }
-        public void ActualizarSeBajo(string Mail)
-        {
-            string Linea = "999";
-            ConnectionHelper miHelper = new ConnectionHelper();
-            string sUpdate = ("update usuario Set Linea = '" +Linea+ "' where Mail = '" + Mail + "'");
-            miHelper.EjecutarIUD(sUpdate);
+            string sInsert = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
+            miHelper.EjecutarIUD(sInsert);
         }
 
         public void Insert(Usuario Usr)
@@ -114,8 +107,8 @@ namespace API.Models
         private static LatLng ObtenerLatLngPorRow(DataRow row)
         {
             LatLng p = new LatLng();
-            p.Lat = row.Field<string>("Lat");
-            p.Lng = row.Field<string>("Lng");
+            p.Lat = row.Field<double>("Lat");
+            p.Lng = row.Field<double>("Lng");
 
             return p;
         }
@@ -128,9 +121,9 @@ namespace API.Models
             p.Sexo = row.Field<string>("Sexo");
             p.Email = row.Field<string>("Mail");
             p.Contraseña = row.Field<string>("Contrasena");
-            p.Lat = row.Field<string>("Lat");
-            p.Lng = row.Field<string>("Lng");
-            p.Linea = row.Field<string>("Linea");
+            p.Lat = row.Field<double>("Lat");
+            p.Lng = row.Field<double>("Lng");
+            p.Linea = row.Field<string>("Linea"); 
          
             return p;
         }
