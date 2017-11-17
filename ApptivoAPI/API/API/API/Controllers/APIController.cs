@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Globalization;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -73,15 +72,22 @@ namespace API.Controllers
         public string Coordenadas(string strMail, string strLinea, string strLat, string strLng)
         {
             string TodoOk = "Good";
-            double nLat = double.Parse(strLat, System.Globalization.CultureInfo.InvariantCulture);
-            double nLng = double.Parse(strLng, System.Globalization.CultureInfo.InvariantCulture);
+            float nLat = float.Parse(strLat);
+            float nLng = float.Parse(strLng);
             Usuario nusuario = new Usuario();
             nusuario.InsertarCoordenadas(strMail, strLinea, nLat, nLng);
+            return TodoOk;
+        }
+        [Route("api/API/SeBajo/{strMail}")]
+        public string SeBajo(string strMail)
+        {
+            string TodoOk = "Good";
+            Usuario nusuario = new Usuario();
+            nusuario.ActualizarSeBajo(strMail);
             return TodoOk;
 
 
         }
-
         // POST: api/API
         public void Post([FromBody]string value)
         {
