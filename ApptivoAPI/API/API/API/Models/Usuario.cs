@@ -55,7 +55,7 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
-        public void InsertarCoordenadas(string Mail, string Linea, float Lat, float Lng)
+        public void InsertarCoordenadas(string Mail, string Linea, double Lat, double Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
             string sInsert = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
