@@ -72,8 +72,8 @@ namespace API.Controllers
         public string Coordenadas(string strMail, string strLinea, string strLat, string strLng)
         {
                 string TodoOk = "Good";
-                float nLat = float.Parse(strLat);
-                float nLng = float.Parse(strLng);
+                double nLat = double.Parse(strLat);
+                double nLng = double.Parse(strLng);
                 Usuario nusuario = new Usuario();
                 nusuario.InsertarCoordenadas(strMail, strLinea, nLat, nLng);
                 return TodoOk;
