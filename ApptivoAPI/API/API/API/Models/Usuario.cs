@@ -55,10 +55,10 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
-        public void InsertarCoordenadas(string Mail, string Linea, float Lat, float Lng)
+        public void InsertarCoordenadas(string Mail, string Linea, string Lat, string Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
-            string sUpdate = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
+            string sUpdate = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+float.Parse(Lat)+"', Lng='"+float.Parse(Lng)+"' where Mail = '"+Mail+"'");
             miHelper.EjecutarIUD(sUpdate);
         }
         public void ActualizarSeBajo(string Mail)
