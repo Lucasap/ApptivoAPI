@@ -21,8 +21,8 @@ namespace API.Models
         public string Email { get; set; }
         public string Contraseña { get; set; }
         public string Sexo { get; set; }
-        public double Lat { get; set; }
-        public double Lng { get; set; }
+        public string Lat { get; set; }
+        public string Lng { get; set; }
         public string Linea { get; set; }
 
         //private string NombreArchivo = "Apptivo.mdb";
@@ -55,7 +55,7 @@ namespace API.Models
                 System.Diagnostics.Debugger.Break();
             }
         }
-        public void InsertarCoordenadas(string Mail, string Linea, double Lat, double Lng)
+        public void InsertarCoordenadas(string Mail, string Linea, string Lat, string Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
             string sUpdate = ("update usuario Set Linea = '"+Linea+"', Lat = '"+Lat+"', Lng='"+Lng+"' where Mail = '"+Mail+"'");
@@ -114,8 +114,8 @@ namespace API.Models
         private static LatLng ObtenerLatLngPorRow(DataRow row)
         {
             LatLng p = new LatLng();
-            p.Lat = row.Field<double>("Lat");
-            p.Lng = row.Field<double>("Lng");
+            p.Lat = row.Field<string>("Lat");
+            p.Lng = row.Field<string>("Lng");
 
             return p;
         }
@@ -128,8 +128,8 @@ namespace API.Models
             p.Sexo = row.Field<string>("Sexo");
             p.Email = row.Field<string>("Mail");
             p.Contraseña = row.Field<string>("Contrasena");
-            p.Lat = row.Field<double>("Lat");
-            p.Lng = row.Field<double>("Lng");
+            p.Lat = row.Field<string>("Lat");
+            p.Lng = row.Field<string>("Lng");
             p.Linea = row.Field<string>("Linea");
          
             return p;
