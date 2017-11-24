@@ -46,7 +46,7 @@ namespace API.Models
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = miHelper.connection;
+                cmd.Connection = miHelper.connection;                
                 cmd.CommandText = string.Format("INSERT INTO `usuario` (`Nombre`, `Apellido`, `Sexo`, `Mail`, `Contrasena`) VALUES ('" + Nombre + "', '" + Apellido + "', '" + Sexo + "', '" + MailUsuario.Replace("@", "O") + "', '" + Contraseña + "')");
                 cmd.ExecuteNonQuery();
             }
@@ -58,7 +58,7 @@ namespace API.Models
         public void InsertarCoordenadas(string Mail, string Linea, string Lat, string Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
-            string sUpdate = ("update usuario Set Linea = '" + Linea + "', Lat = '" + float.Parse(Lat) + "', Lng='" + float.Parse(Lng) + "' where Mail = '" + Mail + "'");
+            string sUpdate = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+float.Parse(Lat)+"', Lng='"+float.Parse(Lng)+"' where Mail = '"+Mail+"'");
             miHelper.EjecutarIUD(sUpdate);
         }
         public void ActualizarSeBajo(string Mail)
@@ -121,7 +121,6 @@ namespace API.Models
             p.Lng = row.Field<string>("Lng");
 
             return p;
-
         }
         private static Usuario ObtenerPorRow(DataRow row)
         {

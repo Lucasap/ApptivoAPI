@@ -7,7 +7,7 @@ namespace API.Models
 {
     public class LatLng
     {
-        public String Lat { get; set; }
-        public String Lng { get; set; }
+        public string Lat { get; set; }
+        public string Lng { get; set; }
     }
 }
