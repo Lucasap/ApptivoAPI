@@ -117,8 +117,10 @@ namespace API.Models
         private static LatLng ObtenerLatLngPorRow(DataRow row)
         {
             LatLng p = new LatLng();
-            p.Lat = row.Field<float>("Lat");
-            p.Lng = row.Field<float>("Lng");
+            float Lat = row.Field<float>("Lat");
+            float Lng = row.Field<float>("Lng");
+            p.Lat = Lat.ToString();
+            p.Lng = Lng.ToString();
 
             return p;
         }
