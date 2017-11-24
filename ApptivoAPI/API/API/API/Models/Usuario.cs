@@ -125,19 +125,19 @@ namespace API.Models
             {
                 if (Lat.Contains("-"))
                 {
-                    Lat.Insert(2, ".");
+                    Lat.Insert(3, ".");
                 }
                 else
                 {
-                    Lat.Insert(1, ".");
+                    Lat.Insert(2, ".");
                 }
                 if (Lng.Contains("-"))
                 {
-                    Lng.Insert(2, ".");
+                    Lng.Insert(3, ".");
                 }
                 else
                 {
-                    Lng.Insert(1, ".");
+                    Lng.Insert(2, ".");
                 }
                 p.Lat = Lat;
                 p.Lng = Lng;
