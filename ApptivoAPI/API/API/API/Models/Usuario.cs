@@ -116,97 +116,10 @@ namespace API.Models
         }
         private static LatLng ObtenerLatLngPorRow(DataRow row)
         {
-            bool CONTIENE;
             LatLng p = new LatLng();
-            float Lat1 = row.Field<float>("Lat");
-            float Lng1 = row.Field<float>("Lng");
-            String Lat = Lat1.ToString();
-            String Lng = Lng1.ToString();
+            p.Lat = row.Field<string>("Lat");
+            p.Lng = row.Field<string>("Lng");
 
-            if (Lat.Contains("-"))
-            {
-                 CONTIENE = true;
-            }
-            else
-            {
-                 CONTIENE = false;
-            }
-            String nuevo = "";
-
-            for (int i = 0; i <= Lat.Length; i++)
-            {
-                if (CONTIENE)
-                {
-                    //Deberia estar en el char 3  --> -34.2323
-                    if (i == 2)
-                    {
-                        nuevo += Lat[i] + ".";
-                        //si i vale 2 osea TEXT[i] = 4 le agrega ademas el punto atras
-                    }
-
-                    else
-                    {
-                        nuevo += Lat[i];
-                    }
-                }
-                else
-                {
-                    //Esta en el char 2  --> 34.2323
-                    if (i == 1)
-                    {
-                        nuevo += Lat[i] + ".";
-                        //si i vale 1 osea TEXT[i] = 4 le agrega ademas el punto atras
-                    }
-                    else
-                    {
-                        nuevo += Lat[i];
-                    }
-                }
-                
-             }
-            p.Lat = nuevo;
-            if (Lng.Contains("-"))
-            {
-                CONTIENE = true;
-            }
-            else
-            {
-                CONTIENE = false;
-            }
-            String nuevo2 = "";
-
-            for (int i = 0; i <= Lng.Length; i++)
-            {
-                if (CONTIENE)
-                {
-                    //Deberia estar en el char 3  --> -34.2323
-                    if (i == 2)
-                    {
-                        nuevo2 += Lng[i] + ".";
-                        //si i vale 2 osea TEXT[i] = 4 le agrega ademas el punto atras
-                    }
-
-                    else
-                    {
-                        nuevo2 += Lng[i];
-                    }
-                }
-                else
-                {
-                    //Esta en el char 2  --> 34.2323
-                    if (i == 1)
-                    {
-                        nuevo2 += Lng[i] + ".";
-                        //si i vale 1 osea TEXT[i] = 4 le agrega ademas el punto atras
-                    }
-                    else
-                    {
-                        nuevo2 += Lng[i];
-                    }
-                }
-
-            }
-            p.Lng = nuevo2;
             return p;
 
         }
