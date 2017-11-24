@@ -46,7 +46,7 @@ namespace API.Models
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = miHelper.connection;                
+                cmd.Connection = miHelper.connection;
                 cmd.CommandText = string.Format("INSERT INTO `usuario` (`Nombre`, `Apellido`, `Sexo`, `Mail`, `Contrasena`) VALUES ('" + Nombre + "', '" + Apellido + "', '" + Sexo + "', '" + MailUsuario.Replace("@", "O") + "', '" + Contraseña + "')");
                 cmd.ExecuteNonQuery();
             }
@@ -58,7 +58,7 @@ namespace API.Models
         public void InsertarCoordenadas(string Mail, string Linea, string Lat, string Lng)
         {
             ConnectionHelper miHelper = new ConnectionHelper();
-            string sUpdate = ("update usuario Set Linea = '"+ Linea +"', Lat = '"+float.Parse(Lat)+"', Lng='"+float.Parse(Lng)+"' where Mail = '"+Mail+"'");
+            string sUpdate = ("update usuario Set Linea = '" + Linea + "', Lat = '" + float.Parse(Lat) + "', Lng='" + float.Parse(Lng) + "' where Mail = '" + Mail + "'");
             miHelper.EjecutarIUD(sUpdate);
         }
         public void ActualizarSeBajo(string Mail)
@@ -116,38 +116,99 @@ namespace API.Models
         }
         private static LatLng ObtenerLatLngPorRow(DataRow row)
         {
+            bool CONTIENE;
             LatLng p = new LatLng();
             float Lat1 = row.Field<float>("Lat");
-            float Lng1= row.Field<float>("Lng");
+            float Lng1 = row.Field<float>("Lng");
             String Lat = Lat1.ToString();
             String Lng = Lng1.ToString();
-            try
+
+            if (Lat.Contains("-"))
             {
-                if (Lat.Contains("-"))
+                 CONTIENE = true;
+            }
+            else
+            {
+                 CONTIENE = false;
+            }
+            String nuevo = "";
+
+            for (int i = 0; i <= Lat.Length; i++)
+            {
+                if (CONTIENE)
                 {
-                    Lat.Insert(3, ".");
+                    //Deberia estar en el char 3  --> -34.2323
+                    if (i == 2)
+                    {
+                        nuevo += Lat[i] + ".";
+                        //si i vale 2 osea TEXT[i] = 4 le agrega ademas el punto atras
+                    }
+
+                    else
+                    {
+                        nuevo += Lat[i];
+                    }
                 }
                 else
                 {
-                    Lat.Insert(2, ".");
+                    //Esta en el char 2  --> 34.2323
+                    if (i == 1)
+                    {
+                        nuevo += Lat[i] + ".";
+                        //si i vale 1 osea TEXT[i] = 4 le agrega ademas el punto atras
+                    }
+                    else
+                    {
+                        nuevo += Lat[i];
+                    }
                 }
-                if (Lng.Contains("-"))
+                
+             }
+            p.Lat = nuevo;
+            if (Lng.Contains("-"))
+            {
+                CONTIENE = true;
+            }
+            else
+            {
+                CONTIENE = false;
+            }
+            String nuevo2 = "";
+
+            for (int i = 0; i <= Lng.Length; i++)
+            {
+                if (CONTIENE)
                 {
-                    Lng.Insert(3, ".");
+                    //Deberia estar en el char 3  --> -34.2323
+                    if (i == 2)
+                    {
+                        nuevo2 += Lng[i] + ".";
+                        //si i vale 2 osea TEXT[i] = 4 le agrega ademas el punto atras
+                    }
+
+                    else
+                    {
+                        nuevo2 += Lng[i];
+                    }
                 }
                 else
                 {
-                    Lng.Insert(2, ".");
+                    //Esta en el char 2  --> 34.2323
+                    if (i == 1)
+                    {
+                        nuevo2 += Lng[i] + ".";
+                        //si i vale 1 osea TEXT[i] = 4 le agrega ademas el punto atras
+                    }
+                    else
+                    {
+                        nuevo2 += Lng[i];
+                    }
                 }
-                p.Lat = Lat;
-                p.Lng = Lng;
-            }
-            catch(Exception e)
-            {
 
             }
-
+            p.Lng = nuevo2;
             return p;
+
         }
         private static Usuario ObtenerPorRow(DataRow row)
         {
