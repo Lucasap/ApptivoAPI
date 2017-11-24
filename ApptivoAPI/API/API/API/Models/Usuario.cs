@@ -121,8 +121,8 @@ namespace API.Models
             float Lng1 = row.Field<float>("Lng");
             String Lat = Lat1.ToString();
             String Lng = Lng1.ToString();
-            p.Lat = Lat.Substring(0,7);
-            p.Lng = Lng.Substring(0,7);
+            p.Lat = Lat.Substring(0,6);
+            p.Lng = Lng.Substring(0,6);
 
             return p;
         }
