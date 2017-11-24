@@ -78,9 +78,11 @@ namespace API.Controllers
             nusuario.InsertarCoordenadas(strMail, strLinea, strLat, strLng);
             return TodoOk;
         }
-        [Route("api/API/SeBajo/{strMail}")]
-        public string SeBajo(string strMail)
+        [Route("api/API/SeBajo/{strMail}/{strHola}")]
+        [HttpGet]
+        public string SeBajo(string strMail, string strHola)
         {
+            strHola = "Hola";
             string TodoOk = "Good";
             Usuario nusuario = new Usuario();
             nusuario.ActualizarSeBajo(strMail);
