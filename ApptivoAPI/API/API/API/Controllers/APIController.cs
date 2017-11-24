@@ -79,6 +79,7 @@ namespace API.Controllers
             return TodoOk;
         }
         [Route("api/API/SeBajo/{strMail}/{strHola}")]
+        [HttpGet]
         public string SeBajo(string strMail, string strHola)
         {
             strHola = "Hola";
